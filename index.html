@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>edafawd</title>
+<meta name="description" content="edafawd's projects on GitHub">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐞</text></svg>">
+<style>
+:root {
+  --bg: #f6f7f4; --card: #ffffff; --text: #1d241f; --muted: #5d6a61; --line: #dfe4dc;
+  --accent: #2f6b45; --accent-soft: #e3efe6; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 14px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121614; --card: #1b201d; --text: #e7ece8; --muted: #9aa69e; --line: #2c3430;
+    --accent: #7fc796; --accent-soft: #1f3327; --shadow: none; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 40px 16px 60px; }
+header { display: flex; gap: 16px; align-items: center; margin-bottom: 28px; }
+header img { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--line); background: var(--card); }
+h1 { margin: 0; font-size: 30px; letter-spacing: -.02em; }
+header p { margin: 2px 0 0; color: var(--muted); }
+a { color: var(--accent); }
+h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 32px 0 12px; }
+.featured { display: block; text-decoration: none; color: inherit; background: var(--accent-soft);
+  border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+.featured strong { font-size: 20px; }
+.featured span { display: block; color: var(--muted); margin-top: 4px; }
+.tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.tools input { flex: 1 1 220px; min-width: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--card); color: var(--text); font: inherit; }
+.tools label { color: var(--muted); font-size: 14px; display: flex; gap: 6px; align-items: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.card h3 { margin: 0; font-size: 17px; overflow-wrap: anywhere; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; flex: 1; }
+.meta { font-size: 13px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.tag { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 0 8px; }
+.links { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.links a { font-size: 14px; text-decoration: none; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); }
+.links a.site { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.empty { color: var(--muted); }
+footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="https://github.com/edafawd.png?size=144" alt="">
+    <div>
+      <h1>edafawd</h1>
+      <p>I build websites, AI models, robots and games.</p>
+    </div>
+  </header>
+
+  <h2>Featured</h2>
+  <a class="featured" href="https://wizkidzai.github.io/pyinsect/">
+    <strong>🐞 Pyinsect</strong>
+    <span>Take a photo of an insect, find out what it is, and report invasive species. Made with my FIRST LEGO League team.</span>
+  </a>
+
+  <h2>All my projects (<span id="count">…</span>)</h2>
+  <div class="tools">
+    <input id="search" type="search" placeholder="Search projects…" aria-label="Search projects">
+    <label><input id="onlySites" type="checkbox"> Only ones with a website</label>
+  </div>
+  <div id="grid" class="grid"></div>
+
+  <footer>This list comes straight from <a href="https://github.com/edafawd">github.com/edafawd</a>, so new projects show up by themselves.</footer>
+</div>
+
+<script>
+// Today's list, used if GitHub can't be reached (GitHub allows 60 lookups an hour per visitor)
+const SAVED = [{"name":"-jfie-FCD","pages":false,"fork":false,"description":"","language":"Python","pushed":"2026-06-29"},{"name":"ad","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-04-11"},{"name":"Ai-local","pages":false,"fork":false,"description":"A local ai chatbot that's simple to use!","language":"","pushed":"2026-06-17"},{"name":"animated-potato","pages":true,"fork":false,"description":"","language":"","pushed":"2026-01-12"},{"name":"Arduino-Robot-car-with-rassberry-pi-5","pages":false,"fork":false,"description":"Make a smart robot car with a few parts!","language":"Python","pushed":"2026-06-29"},{"name":"Crash-Yard","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-11-04"},{"name":"crispy-rotary-phone","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-13"},{"name":"csde","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-12"},{"name":"DIY-FLL-REGISTRATION-","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-11"},{"name":"effffe","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-11"},{"name":"elegoo","pages":false,"fork":false,"description":"","language":"Python","pushed":"2026-05-05"},{"name":"FLL-REGISTRATION","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-11"},{"name":"FLL-REGISTRATION-","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-13"},{"name":"fzsn-hkuhuvjdsfukhfudvgikfads","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-07-22"},{"name":"ISOlinux","pages":false,"fork":false,"description":"","language":"","pushed":"2026-05-17"},{"name":"Local-Bot","pages":false,"fork":false,"description":"","language":"C++","pushed":"2026-06-19"},{"name":"miniature-pancake","pages":false,"fork":false,"description":"","language":"","pushed":"2026-01-12"},{"name":"Old-Windows","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-03-29"},{"name":"Online-VM","pages":true,"fork":false,"description":"a virtual machine online","language":"HTML","pushed":"2026-05-24"},{"name":"Protect_the_coral","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-07-28"},{"name":"Pyinsect","pages":true,"fork":false,"description":"","language":"Python","pushed":"2026-10-07"},{"name":"Pyinsect-Playground","pages":true,"fork":true,"description":"This is not for main use this is for testings","language":"","pushed":"2026-11-17"},{"name":"Pyinsect-Site","pages":true,"fork":false,"description":"","language":"JavaScript","pushed":"2026-10-10"},{"name":"qwed","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-12"},{"name":"refactored-octo-eureka","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-12"},{"name":"REGISTRATION-APP-FLL-","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-17"},{"name":"schoolyoutubeglitch8331-8-","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-03-22"},{"name":"stunning-train","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-13"},{"name":"urban-octo-memory","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-12"},{"name":"w","pages":false,"fork":false,"description":"","language":"HTML","pushed":"2026-11-03"},{"name":"wda","pages":true,"fork":false,"description":"","language":"HTML","pushed":"2026-01-12"},{"name":"wdass7","pages":false,"fork":false,"description":"","language":"HTML","pushed":"2026-01-12"}];
+const USER = "edafawd", HOME = `${USER}.github.io`.toLowerCase();
+let repos = SAVED;
+
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+function link(text, href, cls) { const a = el("a", cls, text); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; }
+
+function show() {
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const onlySites = document.getElementById("onlySites").checked;
+  const list = repos
+    .filter(r => r.name.toLowerCase() !== HOME && r.name.toLowerCase() !== USER)
+    .filter(r => !onlySites || r.pages)
+    .filter(r => !q || (r.name + " " + r.description).toLowerCase().includes(q))
+    .sort((a, b) => b.pushed.localeCompare(a.pushed));
+  const grid = document.getElementById("grid");
+  grid.replaceChildren();
+  document.getElementById("count").textContent = list.length;
+  if (!list.length) grid.append(el("p", "empty", "No projects match."));
+  for (const r of list) {
+    const card = el("article", "card");
+    card.append(el("h3", null, r.name.replace(/[-_]+/g, " ").trim() || r.name));
+    card.append(el("p", null, r.description || " "));
+    const meta = el("div", "meta");
+    if (r.language) meta.append(el("span", "tag", r.language));
+    if (r.fork) meta.append(el("span", "tag", "fork"));
+    meta.append(el("span", null, "Updated " + new Date(r.pushed + "T12:00:00").toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })));
+    const links = el("div", "links");
+    if (r.pages) links.append(link("Visit site", `https://${USER}.github.io/${r.name}/`, "site"));
+    links.append(link("Code", `https://github.com/${USER}/${r.name}`));
+    card.append(meta, links);
+    grid.append(card);
+  }
+}
+
+document.getElementById("search").oninput = show;
+document.getElementById("onlySites").onchange = show;
+show();
+
+// Fresh list from GitHub (only public repos are ever returned)
+fetch(`https://api.github.com/users/${USER}/repos?per_page=100`)
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(data => {
+    repos = data.filter(r => !r.private).map(r => ({ name: r.name, pages: r.has_pages, fork: r.fork,
+      description: r.description || "", language: r.language || "", pushed: (r.pushed_at || "").slice(0, 10) }));
+    show();
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>
